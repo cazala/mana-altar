@@ -162,16 +162,8 @@ helpStone.add(new OnClick(() => (helpVisible = 10)))
 engine.addEntity(helpStone)
 
 const helpText = new Entity()
-const helpShape = new TextShape(`MANA ALTAR
-
-Fees collected from the Marketplace are stored in this Altar.
-
-Anyone can burn the MANA collected by touching the Altar's stone 
-and light the flame, which will last 1 block for every 10 MANA burnt.`)
+const helpShape = new GLTFShape('models/Papel.gltf')
 helpShape.billboard = 7
-helpShape.color = textColor
-helpShape.width = 6
-helpShape.height = 4
 helpText.add(helpShape)
 helpText.add(
   new Transform({
