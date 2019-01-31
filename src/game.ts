@@ -5,6 +5,9 @@ import * as eth from '../node_modules/eth-connect/esm'
 import ManaBurnerABI from './abis/ManaBurner'
 import ManaTokenABI from './abis/ManaToken'
 
+// If this is on, no transaction is made and the mana is mocked
+let DEMO_MODE = false
+
 const MANA_TOKEN_ADDRESS = '0x0f5d2fb29fb7d3cfee444a200298f468908cc942'
 const MANA_BURNER_ADDRESS = '0xadfeb1de7876fcabeaf87df5a6c566b70f970018'
 const BURN_EVENT_TOPIC0 =
@@ -74,8 +77,10 @@ async function refresh() {
   log(`${lastAmount} MANA burnt ${block - lastBlock} blocks ago`)
   log('Is fire burning:', isFireBurning())
 
-  mana = 25000
-  lastAmount = 0
+  if (DEMO_MODE) {
+    mana = 25000
+    lastAmount = 0
+  }
 
   update()
 }
@@ -90,9 +95,11 @@ async function burn() {
     MANA_BURNER_ADDRESS
   )) as any
   const account = await getUserAccount()
-  // await manaBurnerInstance.burn({
-  //   from: account
-  // })
+  if (!DEMO_MODE) {
+    await manaBurnerInstance.burn({
+      from: account
+    })
+  }
 
   lastAmount = mana
   lastBlock = block
