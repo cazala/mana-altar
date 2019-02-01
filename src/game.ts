@@ -294,7 +294,7 @@ class ParicleSystem {
   group = engine.getComponentGroup(Particle)
   update(dt: number) {
     if (isFireBurning()) {
-      fireHeight = fireHeight + (1 - fireHeight) / 10
+      fireHeight = fireHeight + (2 - fireHeight) / 10
       shape.visible = true
       for (const entity of this.group.entities) {
         const particle = entity.get(Particle)
