@@ -25,8 +25,8 @@ let lastAmount = 0
 // Last block where mana was burnt
 let lastBlock = 0
 
-const initialColor = new Color3(37 / 255, 242 / 255, 255 / 255)
-const finalColor = new Color3(26 / 255, 255 / 255, 255 / 255)
+const initialColor = new Color3(1, 0.3, 0)
+const finalColor = new Color3(1, 0, 0)
 const textColor = new Color3(14 / 255, 186 / 255, 255 / 255)
 
 export function isFireBurning() {
